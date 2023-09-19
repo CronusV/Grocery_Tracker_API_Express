@@ -55,36 +55,36 @@ function deleteGroceryItemByID(grocery_id) {
   return docClient.delete(params).promise();
 }
 
-// UPDATE item with grocery id
+// UPDATE item with grocery id, and depending on what the req body is then update accordingly
 function updateGroceryItemByID(grocery_id, item) {
   const ExpressionAttributeNames = {};
   const ExpressionAttributeValues = {};
   const expressions = [];
   // Going to update if req body has correct key value and not empty
   if (item.name !== undefined && item.name !== '') {
+    expressions.push('#name = :name');
     ExpressionAttributeNames['#name'] = 'name';
     ExpressionAttributeValues[':name'] = item.name;
-    expressions.push('#name = :name');
   }
   if (item.quantity !== undefined && item.quantity !== '') {
+    expressions.push('#quantity = :quantity');
     ExpressionAttributeNames['#quantity'] = 'quantity';
     ExpressionAttributeValues[':quantity'] = item.quantity;
-    expressions.push('#quantity = :quantity');
   }
   if (item.price !== undefined && item.price !== '') {
+    expressions.push('#price = :price');
     ExpressionAttributeNames['#price'] = 'price';
     ExpressionAttributeValues[':price'] = item.price;
-    expressions.push('#price = :price');
   }
   if (item.bought !== undefined && item.bought !== '') {
+    expressions.push('#bought = :bought');
     ExpressionAttributeNames['#bought'] = 'bought';
     ExpressionAttributeValues[':bought'] = item.bought;
-    expressions.push('#bought = :bought');
   }
   if (item.category !== undefined && item.category !== '') {
+    expressions.push('#category = :category');
     ExpressionAttributeNames['#category'] = 'category';
     ExpressionAttributeValues[':category'] = item.category;
-    expressions.push('#category = :category');
   }
   // Join expressions into one to update what's necessary
   const UpdateExpression = `set ${expressions.join(', ')}`;
@@ -99,7 +99,6 @@ function updateGroceryItemByID(grocery_id, item) {
     ExpressionAttributeValues,
   };
 
-  console.log(`In updateDAO with params:\n${JSON.stringify(params)}`);
   return docClient.update(params).promise();
 }
 module.exports = {
