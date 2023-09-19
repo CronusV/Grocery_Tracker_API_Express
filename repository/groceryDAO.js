@@ -43,8 +43,20 @@ function retrieveAllGroceryItems() {
 
   return docClient.scan(params).promise();
 }
+
+// DELETE item with grocery id
+function deleteGroceryItemByID(grocery_id) {
+  const params = {
+    TableName,
+    Key: {
+      grocery_id,
+    },
+  };
+  return docClient.delete(params).promise();
+}
 module.exports = {
   addGroceryItem,
   getGroceryItemByID,
   retrieveAllGroceryItems,
+  deleteGroceryItemByID,
 };
