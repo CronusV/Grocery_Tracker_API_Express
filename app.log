@@ -30,3 +30,11 @@
 2023-09-19T20:46:16.314Z [info]: Unable to update item ea74f3ba-eb96-4801-af3b-f0bb960b804b in dynamoDB
 2023-09-19T20:48:11.117Z [info]: Successfully updated item: ea74f3ba-eb96-4801-af3b-f0bb960b804b
 2023-09-19T20:52:25.714Z [info]: Successfully updated item: ea74f3ba-eb96-4801-af3b-f0bb960b804b
+2023-09-19T21:20:21.023Z [info]: Successful POST:
+ {"name":"grapes","quantity":43,"price":2,"bought":false,"category":"fruit","valid":true}
+2023-09-19T21:20:52.877Z [info]: GET all grocery items
+{"Items":[{"grocery_id":"ea74f3ba-eb96-4801-af3b-f0bb960b804b","quantity":34,"bought":false,"category":"megfhjat","price":5,"name":"stk"},{"quantity":3,"grocery_id":"bbfd50a3-1fc8-48d0-950a-947d21a7747d","category":"fruit","bought":true,"price":2,"name":"apple"},{"quantity":43,"grocery_id":"cdfa73c8-3e72-4a8c-8658-cac19b8cbf07","category":"fruit","bought":false,"price":2,"name":"grapes"},{"quantity":5,"grocery_id":"6f5059e6-0dff-4507-8f73-27bcfc0ef3eb","category":"fruit","bought":true,"price":20,"name":"strawberry"}],"Count":4,"ScannedCount":4}
+2023-09-19T21:21:05.931Z [info]: Successful GET with grocery id: cdfa73c8-3e72-4a8c-8658-cac19b8cbf07
+ item: {"quantity":43,"grocery_id":"cdfa73c8-3e72-4a8c-8658-cac19b8cbf07","category":"fruit","bought":false,"price":2,"name":"grapes"}
+2023-09-19T21:21:29.441Z [info]: Successfully deleted item cdfa73c8-3e72-4a8c-8658-cac19b8cbf07
+2023-09-19T21:22:02.553Z [info]: Successfully updated item: ea74f3ba-eb96-4801-af3b-f0bb960b804b
