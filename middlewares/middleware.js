@@ -17,4 +17,9 @@ function validateNewItem(req, res, next) {
   }
 }
 
-module.exports = { validateNewItem };
+function validateGroceryItemID(req, res, next) {
+  const body = req.body;
+  body.valid = body.grocery_id ? true : false;
+  next();
+}
+module.exports = { validateNewItem, validateGroceryItemID };
