@@ -5,3 +5,28 @@
  {"name":"grapes","quantity":43,"price":2,"bought":true,"category":"fruit","valid":true}
 2023-09-19T18:28:12.772Z [info]: Successful POST:
  {"name":"grapes","quantity":43,"price":2,"bought":false,"category":"fruit","valid":true}
+2023-09-19T18:57:40.572Z [info]: Failed to get item from dynamoDB
+2023-09-19T18:58:06.758Z [info]: Failed to get item from dynamoDB
+2023-09-19T19:01:28.830Z [info]: Failed to get item from dynamoDB
+2023-09-19T19:11:10.568Z [info]: Successful GET with grocery id
+2023-09-19T19:11:18.623Z [info]: Unsuccesful GET with grocer id because id does not exist
+2023-09-19T19:11:22.157Z [info]: Successful GET with grocery id
+2023-09-19T19:13:33.436Z [info]: Successful GET with grocery id: bbfd50a3-1fc8-48d0-950a-947d21a7747d
+ item: {"quantity":3,"grocery_id":"bbfd50a3-1fc8-48d0-950a-947d21a7747d","category":"fruit","bought":true,"price":2,"name":"apple"}
+2023-09-19T19:20:43.762Z [info]: GET all grocery items
+[object Object]
+2023-09-19T19:34:49.031Z [info]: Successful POST:
+ {"name":"grapes","quantity":43,"price":2,"bought":false,"category":"fruit","valid":true}
+2023-09-19T19:35:04.917Z [info]: Successfully deleted item 8e1a339c-af39-416e-ba7f-f0a92cdf508f
+2023-09-19T19:36:05.644Z [info]: Successful POST:
+ {"name":"grapes","quantity":43,"price":2,"bought":false,"category":"fruit","valid":true}
+2023-09-19T19:36:27.402Z [info]: Successfully deleted item 90f9d509-9f71-4ce0-9891-71b83cf2c7cf
+2023-09-19T20:40:09.057Z [info]: Unable to update item ea74f3ba-eb96-4801-af3b-f0bb960b804b in dynamoDB
+2023-09-19T20:41:31.755Z [info]: Unable to update item ea74f3ba-eb96-4801-af3b-f0bb960b804b in dynamoDB
+2023-09-19T20:41:58.734Z [info]: Unable to update item ea74f3ba-eb96-4801-af3b-f0bb960b804b in dynamoDB
+2023-09-19T20:42:58.303Z [info]: Unable to update item ea74f3ba-eb96-4801-af3b-f0bb960b804b in dynamoDB
+2023-09-19T20:43:27.297Z [info]: Unable to update item ea74f3ba-eb96-4801-af3b-f0bb960b804b in dynamoDB
+2023-09-19T20:45:53.651Z [info]: Unable to update item ea74f3ba-eb96-4801-af3b-f0bb960b804b in dynamoDB
+2023-09-19T20:46:16.314Z [info]: Unable to update item ea74f3ba-eb96-4801-af3b-f0bb960b804b in dynamoDB
+2023-09-19T20:48:11.117Z [info]: Successfully updated item: ea74f3ba-eb96-4801-af3b-f0bb960b804b
+2023-09-19T20:52:25.714Z [info]: Successfully updated item: ea74f3ba-eb96-4801-af3b-f0bb960b804b
