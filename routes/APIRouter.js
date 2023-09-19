@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-// const { logger } = require('../app');
-//grocery_id creator
 const uuid = require('uuid');
+
 const middleware = require('../middlewares/middleware');
 const groceryDAO = require('../repository/groceryDAO');
 
@@ -21,6 +20,7 @@ const logger = createLogger({
     new transports.File({ filename: 'app.log' }), // log to a file
   ],
 });
+
 // Adds new grocery item
 router.post('/grocery-add', middleware.validateNewItem, (req, res) => {
   const item = req.body;
@@ -46,11 +46,14 @@ router.post('/grocery-add', middleware.validateNewItem, (req, res) => {
       });
   } else {
     logger.info(
-      'Failed to add item because missing either name, quantity, price or category'
+      `Failed to add item because missing either name, quantity, price or category:\n${JSON.stringify(
+        item
+      )}`
     );
     res.status(400).send({
-      message:
-        'Invalid grocery item because missing either name, quantity, price or category',
+      message: `Invalid grocery item because missing either name, quantity, price or category\n${JSON.stringify(
+        item
+      )}`,
     });
   }
 });
@@ -76,7 +79,7 @@ router.get('/grocery-by-id', middleware.validateGroceryItemID, (req, res) => {
             'Unsuccesful GET with grocer id because id does not exist'
           );
           res
-            .status(200)
+            .status(400)
             .send({ message: 'Not grocery item found with that ID!' });
         }
       })
@@ -116,10 +119,14 @@ router.delete('/', middleware.validateGroceryItemID, (req, res) => {
           .send({ message: `Successfully deleted item ${grocery_id}` });
       })
       .catch((err) => {
-        logger.info(`Could not find grocery item to delete: ${grocery_id}`);
+        logger.info(
+          `Could not find grocery item to delete: ${grocery_id}\n Error: ${err}`
+        );
         res
           .status(400)
-          .send(`Could not find grocery item to delete: ${grocery_id}`);
+          .send(
+            `Could not find grocery item to delete: ${grocery_id}\n Error: ${err}`
+          );
       });
   } else {
     logger.info('Failed to get because need to include grocery_id in body');
