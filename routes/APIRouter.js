@@ -92,4 +92,13 @@ router.get('/grocery-by-id', middleware.validateGroceryItemID, (req, res) => {
   }
 });
 
+// Returns all of the grocerylist
+router.get('/grocery-list', (req, res) => {
+  groceryDAO.retrieveAllGroceryItems().then((data) => {
+    logger.info(`GET all grocery items\n${JSON.stringify(data)}`);
+    res
+      .status(200)
+      .send({ message: 'Retrieved items from grocery database', data });
+  });
+});
 module.exports = router;

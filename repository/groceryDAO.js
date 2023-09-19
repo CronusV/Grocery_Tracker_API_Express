@@ -35,4 +35,16 @@ function getGroceryItemByID(grocery_id) {
   return docClient.get(params).promise();
 }
 
-module.exports = { addGroceryItem, getGroceryItemByID };
+// GET all grocery items
+function retrieveAllGroceryItems() {
+  const params = {
+    TableName,
+  };
+
+  return docClient.scan(params).promise();
+}
+module.exports = {
+  addGroceryItem,
+  getGroceryItemByID,
+  retrieveAllGroceryItems,
+};
