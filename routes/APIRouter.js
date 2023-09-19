@@ -126,4 +126,34 @@ router.delete('/', middleware.validateGroceryItemID, (req, res) => {
     res.status(400).send({ message: 'Need to include grocery_id in body' });
   }
 });
+
+// Update item with id
+router.put(
+  '/grocery-edit',
+  middleware.validateGroceryItemID,
+  middleware.validateGroceryUpdate,
+  (req, res) => {
+    if (req.body.valid) {
+      const grocery_id = req.body.grocery_id;
+      console.log(`In post with body: ${JSON.stringify(req.body)}`);
+      groceryDAO
+        .updateGroceryItemByID(grocery_id, req.body)
+        .then((data) => {
+          logger.info(`Successfully updated item: ${grocery_id}`);
+          res
+            .status(200)
+            .send({ message: `Successfully updated item ${grocery_id}` });
+        })
+        .catch((err) => {
+          logger.info(`Unable to update item ${grocery_id} in dynamoDB`);
+          res.status(500).send({
+            message: `Unable to update item ${grocery_id} in dynamoDB`,
+          });
+        });
+    } else {
+      logger.info('Failed to get because need to include grocery_id in body');
+      res.status(400).send({ message: 'Need to include grocery_id in body' });
+    }
+  }
+);
 module.exports = router;
