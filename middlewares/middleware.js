@@ -22,4 +22,29 @@ function validateGroceryItemID(req, res, next) {
   body.valid = body.grocery_id ? true : false;
   next();
 }
-module.exports = { validateNewItem, validateGroceryItemID };
+// This function makes sure when updating that SOMETHING is being updated, else set body.valid to false
+function validateGroceryUpdate(req, res, next) {
+  const body = req.body;
+  // Already invalid groceryItemID so just continue
+  if (!body.valid && 'valid' in body) {
+    next();
+  }
+  if (
+    body.name ||
+    body.quantity ||
+    body.category ||
+    body.price ||
+    'bought' in body
+  ) {
+    body.valid = true;
+    next();
+  } else {
+    body.valid = false;
+    next();
+  }
+}
+module.exports = {
+  validateNewItem,
+  validateGroceryItemID,
+  validateGroceryUpdate,
+};
