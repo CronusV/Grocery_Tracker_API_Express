@@ -1,4 +1,4 @@
-// Make sure the req has the correct items
+// Make sure the req has the correct items and set flag accordingly
 function validateNewItem(req, res, next) {
   const body = req.body;
   // Using 'in' for bought because if false then it will set body.valid to false
@@ -16,7 +16,7 @@ function validateNewItem(req, res, next) {
     next();
   }
 }
-
+// Make sure attribute grocery_id is given
 function validateGroceryItemID(req, res, next) {
   const body = req.body;
   body.valid = body.grocery_id ? true : false;
@@ -25,10 +25,11 @@ function validateGroceryItemID(req, res, next) {
 // This function makes sure when updating that SOMETHING is being updated, else set body.valid to false
 function validateGroceryUpdate(req, res, next) {
   const body = req.body;
-  // Already invalid groceryItemID so just continue
+  // Already invalid groceryItemID so just continue (assuming chained fn validateNewItem before)
   if (!body.valid && 'valid' in body) {
     next();
   }
+  // Checking to see if changing at least ONE attribute
   if (
     body.name ||
     body.quantity ||
