@@ -61,9 +61,20 @@ router.get('/grocery-by-id', middleware.validateGroceryItemID, (req, res) => {
     groceryDAO
       .getGroceryItemByID(grocery_id)
       .then((data) => {
-        res
-          .status(200)
-          .send({ message: `Successfully received item!`, item: data });
+        if ('Item' in data) {
+          const item = data.Item;
+          logger.info('Successful GET with grocery id');
+          res
+            .status(200)
+            .send({ message: `Successfully received item!`, item });
+        } else {
+          logger.info(
+            'Unsuccesful GET with grocer id because id does not exist'
+          );
+          res
+            .status(200)
+            .send({ message: 'Not grocery item found with that ID!' });
+        }
       })
       .catch((err) => {
         logger.info('Failed to get item from dynamoDB');
@@ -72,6 +83,7 @@ router.get('/grocery-by-id', middleware.validateGroceryItemID, (req, res) => {
           .send({ message: `Failed to get item from dynamoDB: ${err}` });
       });
   } else {
+    logger.info('Failed to get because need to include grocery_id in body');
     res.status(400).send({ message: 'Need to include grocery_id in body' });
   }
 });
