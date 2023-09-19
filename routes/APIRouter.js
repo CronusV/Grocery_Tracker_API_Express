@@ -142,7 +142,6 @@ router.put(
   (req, res) => {
     if (req.body.valid) {
       const grocery_id = req.body.grocery_id;
-      console.log(`In post with body: ${JSON.stringify(req.body)}`);
       groceryDAO
         .updateGroceryItemByID(grocery_id, req.body)
         .then((data) => {
