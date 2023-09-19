@@ -24,4 +24,15 @@ function addGroceryItem(grocery_id, name, quantity, price, bought, category) {
   return docClient.put(params).promise();
 }
 
-module.exports = { addGroceryItem };
+// GET (using id)
+function getGroceryItemByID(grocery_id) {
+  const params = {
+    TableName,
+    Key: {
+      grocery_id,
+    },
+  };
+  return docClient.get(params).promise();
+}
+
+module.exports = { addGroceryItem, getGroceryItemByID };
