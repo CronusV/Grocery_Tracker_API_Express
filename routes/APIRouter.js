@@ -63,7 +63,11 @@ router.get('/grocery-by-id', middleware.validateGroceryItemID, (req, res) => {
       .then((data) => {
         if ('Item' in data) {
           const item = data.Item;
-          logger.info('Successful GET with grocery id');
+          logger.info(
+            `Successful GET with grocery id: ${grocery_id}\n item: ${JSON.stringify(
+              item
+            )}`
+          );
           res
             .status(200)
             .send({ message: `Successfully received item!`, item });
