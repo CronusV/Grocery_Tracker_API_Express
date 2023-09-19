@@ -55,4 +55,25 @@ router.post('/grocery-add', middleware.validateNewItem, (req, res) => {
   }
 });
 
+router.get('/grocery-by-id', middleware.validateGroceryItemID, (req, res) => {
+  if (req.body.valid) {
+    const grocery_id = req.body.grocery_id;
+    groceryDAO
+      .getGroceryItemByID(grocery_id)
+      .then((data) => {
+        res
+          .status(200)
+          .send({ message: `Successfully received item!`, item: data });
+      })
+      .catch((err) => {
+        logger.info('Failed to get item from dynamoDB');
+        res
+          .status(400)
+          .send({ message: `Failed to get item from dynamoDB: ${err}` });
+      });
+  } else {
+    res.status(400).send({ message: 'Need to include grocery_id in body' });
+  }
+});
+
 module.exports = router;
