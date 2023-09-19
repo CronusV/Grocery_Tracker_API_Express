@@ -21,7 +21,7 @@ const logger = createLogger({
     new transports.File({ filename: 'app.log' }), // log to a file
   ],
 });
-
+// Adds new grocery item
 router.post('/grocery-add', middleware.validateNewItem, (req, res) => {
   const item = req.body;
   if (item.valid) {
@@ -54,7 +54,7 @@ router.post('/grocery-add', middleware.validateNewItem, (req, res) => {
     });
   }
 });
-
+//Returns grocery with id
 router.get('/grocery-by-id', middleware.validateGroceryItemID, (req, res) => {
   if (req.body.valid) {
     const grocery_id = req.body.grocery_id;
@@ -100,5 +100,30 @@ router.get('/grocery-list', (req, res) => {
       .status(200)
       .send({ message: 'Retrieved items from grocery database', data });
   });
+});
+
+// Delete item with id
+router.delete('/', middleware.validateGroceryItemID, (req, res) => {
+  if (req.body.valid) {
+    const grocery_id = req.body.grocery_id;
+    groceryDAO
+      .deleteGroceryItemByID(grocery_id)
+      .then((data) => {
+        // If successful then data returns nothing
+        logger.info(`Successfully deleted item ${grocery_id}`);
+        res
+          .status(200)
+          .send({ message: `Successfully deleted item ${grocery_id}` });
+      })
+      .catch((err) => {
+        logger.info(`Could not find grocery item to delete: ${grocery_id}`);
+        res
+          .status(400)
+          .send(`Could not find grocery item to delete: ${grocery_id}`);
+      });
+  } else {
+    logger.info('Failed to get because need to include grocery_id in body');
+    res.status(400).send({ message: 'Need to include grocery_id in body' });
+  }
 });
 module.exports = router;
