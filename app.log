@@ -1,0 +1,7 @@
+2023-09-19T18:22:29.031Z [info]: Failed to add item because missing either name, quantity, price or category
+2023-09-19T18:22:55.926Z [info]: Successful POST:
+ [object Object]
+2023-09-19T18:24:24.676Z [info]: Successful POST:
+ {"name":"grapes","quantity":43,"price":2,"bought":true,"category":"fruit","valid":true}
+2023-09-19T18:28:12.772Z [info]: Successful POST:
+ {"name":"grapes","quantity":43,"price":2,"bought":false,"category":"fruit","valid":true}
