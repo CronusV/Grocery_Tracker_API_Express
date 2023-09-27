@@ -38,3 +38,14 @@
  item: {"quantity":43,"grocery_id":"cdfa73c8-3e72-4a8c-8658-cac19b8cbf07","category":"fruit","bought":false,"price":2,"name":"grapes"}
 2023-09-19T21:21:29.441Z [info]: Successfully deleted item cdfa73c8-3e72-4a8c-8658-cac19b8cbf07
 2023-09-19T21:22:02.553Z [info]: Successfully updated item: ea74f3ba-eb96-4801-af3b-f0bb960b804b
+2023-09-27T18:10:00.899Z [info]: GET all grocery items
+{"Items":[{"grocery_id":"ea74f3ba-eb96-4801-af3b-f0bb960b804b","quantity":34,"bought":true,"category":"meat","price":5,"name":"Short Rib"},{"quantity":3,"grocery_id":"bbfd50a3-1fc8-48d0-950a-947d21a7747d","category":"fruit","bought":true,"price":2,"name":"apple"},{"quantity":5,"grocery_id":"6f5059e6-0dff-4507-8f73-27bcfc0ef3eb","category":"fruit","bought":true,"price":20,"name":"strawberry"}],"Count":3,"ScannedCount":3}
+2023-09-27T18:12:44.860Z [info]: Unsuccesful GET with grocer id because id does not exist
+2023-09-27T18:13:04.713Z [info]: Successful GET with grocery id: ea74f3ba-eb96-4801-af3b-f0bb960b804b
+ item: {"grocery_id":"ea74f3ba-eb96-4801-af3b-f0bb960b804b","quantity":34,"bought":true,"category":"meat","price":5,"name":"Short Rib"}
+2023-09-27T18:13:47.462Z [info]: Failed to get because need to include grocery_id in body
+2023-09-27T18:14:24.940Z [info]: Failed to get because need to include grocery_id in body
+2023-09-27T18:16:12.094Z [info]: Failed to get because need to include grocery_id in body
+2023-09-27T18:17:08.138Z [info]: Failed to get because need to include grocery_id in body
+2023-09-27T18:18:36.592Z [info]: Failed to get because need to include grocery_id in body
+2023-09-27T18:19:53.656Z [info]: Failed to get because need to include grocery_id in body
