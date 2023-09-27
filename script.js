@@ -20,11 +20,34 @@ function addCard(id, name, price, quantity, category, bought) {
   cardRow.appendChild(card);
 }
 
-// Test function
-addCard('dfsfs', 'fsdfsf', 43242, 342, 'fds', true);
-addCard('dfsfs', 'fsdfsf', 43242, 342, 'fds', true);
-addCard('dfsfs', 'fsdfsf', 43242, 342, 'fds', true);
-addCard('dfsfs', 'fsdfsf', 43242, 342, 'fds', true);
-addCard('dfsfs', 'fsdfsf', 43242, 342, 'fds', true);
-addCard('dfsfs', 'fsdfsf', 43242, 342, 'fds', true);
-addCard('dfsfs', 'fsdfsf', 43242, 342, 'fds', true);
+// Event listener to check HTTP method used
+const selectHTTP = document.querySelector('#httpMethod');
+function changeRequiredOnHTTP() {
+  const currHTTP = selectHTTP.value;
+  if (currHTTP === 'POST') {
+    document.getElementById('id').required = false;
+    document.getElementById('name').required = true;
+    document.getElementById('quantity').required = true;
+    document.getElementById('price').required = true;
+    document.getElementById('category').required = true;
+  }
+  if (currHTTP === 'PUT') {
+    document.getElementById('id').required = true;
+    // Maybe a message here telling user at least one is requried?
+    document.getElementById('name').required = false;
+    document.getElementById('quantity').required = false;
+    document.getElementById('price').required = false;
+    document.getElementById('category').required = false;
+  }
+  if (currHTTP === 'DELETE') {
+    document.getElementById('id').required = true;
+    // Maybe a message here telling user at least one is requried?
+    document.getElementById('name').required = false;
+    document.getElementById('quantity').required = false;
+    document.getElementById('price').required = false;
+    document.getElementById('category').required = false;
+  }
+}
+selectHTTP.addEventListener('change', changeRequiredOnHTTP);
+
+// Even listener for form button
