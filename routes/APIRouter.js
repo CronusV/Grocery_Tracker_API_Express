@@ -160,12 +160,10 @@ router.put(
       logger.info(
         'Failed to get because need to include grocery_id in body and at least one thing you want to change: name, quantity, price, category, or bought'
       );
-      res
-        .status(400)
-        .send({
-          message:
-            'Failed to get because need to include grocery_id in body and at least one thing you want to change: name, quantity, price, category, or bought',
-        });
+      res.status(400).send({
+        message:
+          'Failed to get because need to include grocery_id in body and at least one thing you want to change: name, quantity, price, category, or bought',
+      });
     }
   }
 );
