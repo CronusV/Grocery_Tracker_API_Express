@@ -6,6 +6,9 @@ const server = express();
 const PORT = 3000;
 // router
 const APIRouter = require('./routes/APIRouter');
+// Enable cors to test api with front end
+const cors = require('cors');
+server.use(cors());
 //middleware to parse JSON from req
 const bodyParser = require('body-parser');
 server.use(bodyParser.json());
